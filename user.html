@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
-    <div class="container col-11 col-sm-8 col-md-6 col-lg-6">
+    <div class="container col-11 col-sm-8 col-md-6 col-lg-6" id="bookingcontainer">
         <div class="logoandtext">
             <img id="logo" src="./images/logonobg2.png" alt="Ger's Garage Logo" width="60" height="60">
             <h2 id="gergarage">Ger's Garage</h2>
@@ -94,6 +94,17 @@
         <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
     </div>
         <button onclick="book()">Book A Service</button>
+        <h3 class="logouttext" onclick="logout()">Logout</h3>
+    </div>
+
+    <div class="container col-11 col-sm-8 col-md-6 col-lg-6 containerhidden" id="thankscontainer">
+        <div class="logoandtext">
+        <img id="logo" src="./images/logonobg2.png" alt="Ger's Garage Logo" width="60" height="60">
+        <h2 id="gergarage">Ger's Garage</h2>
+        </div>
+        <h4 class="title">Thanks choosing us.</h4>
+        <h4 class="title"><a href="./user.html">Click here to book another service.</a></h4>
+        <button onclick="logout()"><a href="">Logout</a></button>
     </div>
     
     <script src="./scripts/bookingscript.js"></script>

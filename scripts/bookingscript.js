@@ -1,22 +1,18 @@
-/*document.addEventListener("DOMContentLoaded", () => {
+//Check token when page is loaded
+document.addEventListener("DOMContentLoaded", () => {
   console.log("Content loaded");
-  if (localStorage.getItem("token") == null) {
+  if (sessionStorage.getItem("token") == null) {
     console.log("No token found");
     window.location.href = "./index.html";
   }
 });
 
+//Logout button
 function logout() {
-  localStorage.removeItem("token");
+  sessionStorage.removeItem("token");
+  sessionStorage.removeItem("id");
   window.location.href = "./index.html";
-}*/
-
-/*function checkCookies() {}
-console.log("Test script");
-if (localStorage.getItem("token") == null) {
-  alert("You have to log in");
-  window.location.href = "./index.html";
-}*/
+}
 
 //Disable sunday in calendar
 //Reference: https://stackoverflow.com/questions/49863189/disable-weekends-on-html-5-input-type-date
@@ -77,7 +73,9 @@ function book() {
   let mybookingtype = document.querySelector("#bookingtype").value;
   let mydate = document.querySelector("#date1").value;
   let mycomments = document.querySelector("#comments").value;
-  let myuserid = 2;
+  let myuserid = sessionStorage.getItem("id");
+
+  console.log(myuserid);
 
   //Check Vehicle Plate
   if (myvehicleplate != "") {
@@ -186,6 +184,10 @@ function book() {
       .then(function (data) {
         if (data == true) {
           console.log(data);
+          let bookingcontainer = document.querySelector("#bookingcontainer");
+          let thankscontainer = document.querySelector("#thankscontainer");
+          bookingcontainer.classList.add("containerhidden");
+          thankscontainer.classList.remove("containerhidden");
         } else {
           console.log("Not working");
         }

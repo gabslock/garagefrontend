@@ -28,10 +28,11 @@ function loginApi() {
       } else if (data == "Wrong password.") {
         msgerrorlogin.innerHTML = `<p>${data}</p>`;
       } else {
-        msgerrorlogin.innerHTML = `<p>Login ok</p>`;
         let token = Math.random().toString(16).substring(2);
         console.log(token);
-        localStorage.setItem("token", token);
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("id", data);
+        window.location.href = "./user.html";
       }
     });
 }
