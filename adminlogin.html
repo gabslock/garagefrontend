@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ger's Garage - Admin Login</title>
+    <link rel="stylesheet" href="./styles/styleadminlogin.css">
+</head>
+<body>
+
+    <div class="container" id="bookingcontainer">
+        <div class="logoandtext">
+            <img id="logo" src="./images/logonobg2.png" alt="Ger's Garage Logo" width="60" height="60">
+            <h2 id="gergarage">Ger's Garage</h2>
+            </div>
+            <h3 class="title">Admin Login</h3>
+            <div class='label-float'>
+                <input type="text" id="email" placeholder="Email">
+              </div>
+
+              <div class='label-float'>
+                <input type="password" id="password" placeholder="Password">
+                <div class="errormsg" id="errorlogin"></div>
+              </div>
+              <div class="justify-center">
+                  <button onclick="adminloginApi()">Continue</button>
+              </div>
+              <h5 class="title"><a href="./index.html">User acess</a></h5>
+    </div>
+    
+    <script src="./scripts/adminloginscript.js"></script>
+</body>
+</html>

@@ -1,10 +1,10 @@
 let msgerrorlogin = document.querySelector("#errorlogin");
 
-function loginApi() {
+function adminloginApi() {
   let myemail = document.querySelector("#email").value;
   let mypassword = document.querySelector("#password").value;
 
-  fetch("http://localhost:8090/api/login", {
+  fetch("http://localhost:8090/api/adminlogin", {
     method: "POST",
     body: JSON.stringify({
       email: myemail,
@@ -23,11 +23,10 @@ function loginApi() {
       } else if (data == "Wrong password.") {
         msgerrorlogin.innerHTML = `<p>${data}</p>`;
       } else {
-        let token = Math.random().toString(16).substring(2);
-        console.log(token);
-        sessionStorage.setItem("token", token);
-        sessionStorage.setItem("id", data);
-        window.location.href = "./user.html";
+        console.log(data);
+        let admintoken = Math.random().toString(16).substring(2);
+        sessionStorage.setItem("admintoken", admintoken);
+        window.location.href = "./index.html";
       }
     });
 }
