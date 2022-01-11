@@ -10,11 +10,6 @@ body {
 
   font-family: "Baloo Bhaijaan 2", Arial !important;
   color: #080808 !important;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
   height: 100vh;
   background: url(./../images/background2.jpg);
   background-size: cover;
@@ -24,33 +19,101 @@ body {
 }
 
 .container {
-  width: 500px;
-  max-width: 500px;
-  margin: 1rem;
-  padding: 2rem;
-  padding-bottom: 0.5rem;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   background: #1c77bd;
   opacity: 95%;
-  justify-content: center;
+  margin: 1rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.logoandtext a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+  margin: 0.5rem;
+}
+
+.logoandtext a:hover {
+  color: black;
+}
+
+#gergarage {
+  font-weight: bold;
+}
+
+#logo {
+  margin-right: 10px;
+}
+
+.menu {
+  list-style: none;
+  display: inline-flex;
+  background-color: var(--primarycolor);
+  width: 100%;
+  justify-content: start;
+  padding: 0;
+}
+
+.menuoptions {
+  margin: 1rem;
+}
+
+.menuoptions:hover {
+  margin: 1rem;
+  border-radius: 3px;
+  border-color: black;
+  color: #000000;
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: var(--secondarycolor);
+}
+
+.menu a {
+  text-decoration: none;
+  color: black;
+}
+
+/*Change menu from horizontal to vertical in small screens*/
+@media (max-width: 800px) {
+  .menu {
+    display: block;
+  }
+  .menuoptions {
+    text-align: center;
+  }
+}
+
+#pagetitle {
+  margin: 1rem;
+}
+
+select {
+  display: block;
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+  outline: none;
+  background: #eeeeee;
+  margin-bottom: 0.7rem;
+}
+
 .booking {
-  width: 300px;
-  max-width: 300px;
   margin: 0.3rem;
   padding: 0.5rem;
   padding-bottom: 0.5rem;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   background: var(--primarycolordark);
-  align-items: center;
-  justify-content: center;
   font-size: 14px;
   cursor: pointer;
   border: 2px solid #868686;
@@ -66,7 +129,7 @@ body {
 }
 
 .headerbooking {
-  font-size: 18px;
+  font-size: 16px;
   margin: 0px;
 }
 
@@ -76,120 +139,4 @@ body {
   justify-content: space-between;
   margin: 0rem;
   margin-bottom: 0.2rem;
-}
-
-.rowdirection {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.logoandtext {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-#gergarage {
-  font-weight: bold;
-}
-
-#logo {
-  margin-right: 10px;
-}
-
-img {
-  margin-right: 10px;
-}
-
-.title {
-  display: flex;
-  justify-content: center;
-}
-
-.label-float {
-  position: relative;
-  padding-top: 3px;
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
-
-input {
-  display: block;
-  width: 100%;
-  height: 40px;
-  padding: 0.75rem;
-  box-sizing: border-box;
-  border-radius: 5px;
-  border: 1px solid #dddddd;
-  outline: none;
-  background: #eeeeee;
-  transition: background 0.2s, border-color 0.2s;
-  margin-bottom: 0.7rem;
-}
-
-input:focus {
-  border-color: var(--primarycolor);
-  background: #ffffff;
-}
-
-select {
-  display: block;
-  width: 100%;
-  height: 35px;
-  border-radius: 5px;
-  border: 1px solid #dddddd;
-  outline: none;
-  background: #eeeeee;
-  margin-bottom: 0.7rem;
-}
-
-button {
-  width: 50%;
-  height: 40px;
-  padding: 1rem 1rem;
-  font-weight: bold;
-  font-size: 1.05rem;
-  color: #080808;
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-  background: var(--primarycolor);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-button:hover {
-  background: var(--primarycolordark);
-}
-
-button:active {
-  transform: scale(0.98);
-}
-
-.justify-center {
-  justify-content: center;
-  text-align: center;
-}
-
-a {
-  color: var(--primarycolordark);
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease-out;
-}
-
-a:hover {
-  color: #1a1457;
-}
-
-.errormsg {
-  font-size: 12px;
-  color: var(--errorcolor);
-  margin: 0px;
 }

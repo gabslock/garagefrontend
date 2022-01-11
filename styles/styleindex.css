@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap");
+
+body {
+  --primarycolor: #ffad2e;
+  --primarycolordark: #e9910e;
+  --secondarycolor: #6868ac;
+  --errorcolor: #d42222;
+  --successcolor: #33c729;
+
+  font-family: "Baloo Bhaijaan 2", Arial !important;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: url(./../images/background1.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.container {
+  width: 500px;
+  margin: 3rem;
+  padding: 2rem;
+  padding-bottom: 0.5rem;
+  padding-top: 1rem;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background: #ffffff;
+  opacity: 99%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoandtext a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+.logoandtext a:hover {
+  color: black;
+}
+
+#gergarage {
+  font-weight: bold;
+}
+
+#logo {
+  margin-right: 10px;
+}
+
+.menu {
+  list-style: none;
+  display: inline-flex;
+  background-color: var(--primarycolor);
+  width: 100%;
+  justify-content: start;
+  padding: 0;
+}
+
+.menuoptions {
+  margin: 1rem;
+}
+
+.menuoptions:hover {
+  margin: 1rem;
+  border-radius: 3px;
+  border-color: black;
+  color: #000000;
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: var(--secondarycolor);
+}
+
+.menu a {
+  text-decoration: none;
+  color: black;
+}
+
+/*Change menu from horizontal to vertical in small screens*/
+@media (max-width: 800px) {
+  .menu {
+    display: block;
+  }
+  .menuoptions {
+    text-align: center;
+  }
+}
+
+.welcomemessage {
+  text-align: center;
+  margin: 2rem;
+}
+
+.servicecontainer {
+  margin: 1.5rem;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: var(--primarycolor);
+  overflow: auto;
+  display: flex;
+  background-color: var(--primarycolor);
+}
+
+.servicetext {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem;
+}
+
+@media (max-width: 900px) {
+  .servicecontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+button {
+  width: 50%;
+  height: 40px;
+  padding: 1rem 1rem;
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: #080808;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  background: var(--secondarycolor);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background: var(--primarycolordark);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.contact {
+  margin: 1.5rem;
+  overflow: auto;
+  display: flex;
+}
+
+@media (max-width: 700px) {
+  .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.contacttext {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 1rem;
+}

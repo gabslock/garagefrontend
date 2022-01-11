@@ -9,6 +9,64 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+
+    <div class="container col-11 col-sm-8 col-md-6 col-lg-6" id="containerheader">
+        <div class="logoandtext"><a href="./index.html">
+            <img id="logo" src="./images/logonobg2.png" alt="Ger's Garage Logo" width="60" height="60">
+            <h2 id="gergarage">Ger's Garage</h2>
+        </a></div>
+        <ul class="menu">
+            <a href="./admin.html"><li class="menuoptions">Bookings</li></a>
+            <a href="./roster.html"><li class="menuoptions">Roster</li></a>
+          </ul>
+        <h5 id="pagetitle">Check and change booking details:</h5>
+    </div>
+
+    <div class="container col-11 col-sm-8 col-md-6 col-lg-6" id="bookingcontainer">
+        <div class="booking col-11 col-sm-10 col-md-10 col-lg-10" id="bookingdetails">
+
+                <div id="numberdetails">
+                <p class="headerbooking"><b>Booking Nº 53</b></p>
+                </div>
+
+        <div id="customerdetails">
+            <div class="parabookingrow">
+            <p class="paragbookingtitle"><b>Customer Details</b></p>
+            <img src="./images/caricon.png" alt="Car Icon" height="25">
+        </div>
+            <p class="paragbooking"><b>First name: </b>Gabriel</p>
+            <p class="paragbooking"><b>Last name: </b>Juca</p>
+            <p class="paragbooking"><b>Phone: </b>0856542351</p>
+            <p class="paragbooking"><b>Email: </b>gabriel@cct.ie</p>
+        </div>
+
+        <div id="vehicledetails">
+            <div class="parabookingrow">
+                <p class="paragbookingtitle"><b>Vehicle Details</b></p>
+                <img src="./images/caricon.png" alt="Car Icon" height="25">
+            </div>
+            <p class="paragbooking"><b>Registration Nº: </b>SFDF548</p>
+            <p class="paragbooking"><b>Type: </b>Car</p>
+            <p class="paragbooking"><b>Make: </b>Ford</p>
+            <p class="paragbooking"><b>Model: </b>Fiesta</p>
+            <p class="paragbooking"><b>Year: </b>2020</p>
+            <p class="paragbooking"><b>Engine: </b>Petrol</p>
+        </div>
+
+        <div id="servicedetails">
+            <div class="parabookingrow">
+                <p class="paragbookingtitle"><b>Service Details</b></p>
+                <img src="./images/caricon.png" alt="Car Icon" height="25">
+            </div>
+
+            <p class="paragbooking"><b>Service: </b>Major Service</p>
+            <p class="paragbooking"><b>Date: </b>02-05-2022</p>
+            <p class="paragbooking"><b>Mechanic: </b>John</p>
+            <p class="paragbooking"><b>Status: </b>Booked</p>
+            <p class="paragbooking"><b>Comments: </b>No comments needed.</p>
+        </div>
+        </div>
+    </div>
    
     <script src="./scripts/bookingdetailsscript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

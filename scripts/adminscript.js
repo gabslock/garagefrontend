@@ -18,7 +18,7 @@ function bookingByStatus() {
           <img src="./images/caricon.png" alt="Car Icon" height="25">
           <p class="headerbooking"><b>${item.bookingtype} - ${item.date}</b></p>
           </div>
-          <p class="paragbooking"><b>Customer:</b> Gabriel Juca</p>
+          <p class="paragbooking id="customername${item.bookingid}"><b>Customer:</b> Gabriel Juca</p>
           <p class="paragbooking"><b>${item.vehicletype}: </b>${item.vehiclemake} - ${item.vehiclemodel} - ${item.vehicleyear}</p>
           <p class="paragbooking"><b>Registration: </b>${item.vehicleplate}</p>
       </div>`;

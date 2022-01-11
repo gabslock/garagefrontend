@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Content loaded");
   if (sessionStorage.getItem("token") == null) {
     console.log("No token found");
-    window.location.href = "./index.html";
+    window.location.href = "./login.html";
   }
 });
 
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function logout() {
   sessionStorage.removeItem("token");
   sessionStorage.removeItem("id");
-  window.location.href = "./index.html";
+  window.location.href = "./login.html";
 }
 
 //Disable sunday in calendar
