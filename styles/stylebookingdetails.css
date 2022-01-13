@@ -116,6 +116,7 @@ body {
 .paragbooking {
   font-size: 18px;
   margin: 0px;
+  margin-right: 0.5rem;
 }
 
 .headerbooking {
@@ -125,4 +126,67 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.selectcontainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  margin-top: 0.5rem;
+}
+
+#bookingcontainerchange {
+  background: var(--primarycolordark);
+}
+
+select {
+  display: block;
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+  outline: none;
+  background: #eeeeee;
+  margin-bottom: 0.7rem;
+}
+
+#errormechanic {
+  color: var(--errorcolor);
+  margin: 0.2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#changedetailstitle {
+  background-color: var(--secondarycolor);
+}
+
+.paraginvoice {
+  font-size: 14px;
+  margin: 0px;
+  margin-right: 0.5rem;
+}
+
+#invoice {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#invoicetotal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: var(--errorcolor);
+  margin: 0.5rem;
+}
+
+.paraginvoicetotal {
+  font-size: 18px;
 }

@@ -12,10 +12,14 @@ let numberdetails = document.querySelector("#numberdetails");
 let customerdetails = document.querySelector("#customerdetails");
 let vehicledetails = document.querySelector("#vehicledetails");
 let servicedetails = document.querySelector("#servicedetails");
-let userid = 0;
+let userid;
+let errormechanic = document.querySelector("#errormechanic");
+let invoice = document.querySelector("#invoice");
+let invoicetotal = document.querySelector("#invoicetotal");
 
 document.addEventListener("DOMContentLoaded", () => {
   getBookingDetails();
+  getInvoice();
 });
 
 /*function getBookingDetails() {
@@ -29,7 +33,6 @@ function getBookingDetails() {
     .then((response) => response.json())
     .then((data) => {
       userid = data.userid;
-      console.log(userid);
       numberdetails.innerHTML = `<p class="headerbooking"><b>Booking Nº ${data.bookingid}</b></p>`;
       vehicledetails.innerHTML = `<div class="parabookingrow">
       <p class="paragbookingtitle"><b>Vehicle Details</b></p>
@@ -51,14 +54,11 @@ function getBookingDetails() {
 <p class="paragbooking"><b>Mechanic: </b>${data.mechanic}</p>
 <p class="paragbooking"><b>Status: </b>${data.bookingstatus}</p>
 <p class="paragbooking"><b>Comments: </b>${data.comments}</p>`;
-    });
 
-  fetch(`http://localhost:8090/api/users/${userid}`)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(userid);
-      console.log(data);
-      customerdetails.innerHTML = `<div class="parabookingrow">
+      fetch(`http://localhost:8090/api/users/${userid}`)
+        .then((response) => response.json())
+        .then((data) => {
+          customerdetails.innerHTML = `<div class="parabookingrow">
       <p class="paragbookingtitle"><b>Customer Details</b></p>
       <img src="./images/usericon.png" alt="User Icon" height="25">
   </div>
@@ -66,5 +66,50 @@ function getBookingDetails() {
       <p class="paragbooking"><b>Last name: </b>${data.lastname}</p>
       <p class="paragbooking"><b>Phone: </b>${data.phone}</p>
       <p class="paragbooking"><b>Email: </b>${data.email}</p>`;
+        });
+    });
+}
+
+function changeBookingStatus() {
+  let bookingstatus = document.querySelector("#bookingstatus").value;
+  fetch(`http://localhost:8090/api/changestatus/${bookingid}/${bookingstatus}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    });
+  window.location.reload(false);
+}
+
+function changeBookingMechanic() {
+  errormechanic.innerHTML = "";
+  let bookingmechanic = document.querySelector("#bookingmechanic").value;
+  console.log(`Mech ${bookingmechanic}`);
+  fetch(
+    `http://localhost:8090/api/changemechanic/${bookingid}/${bookingmechanic}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      if (data > 4) {
+        console.log("Mechanic not available.");
+        errormechanic.innerHTML = "<b>Mechanic not available.</b>";
+      } else {
+        window.location.reload(false);
+      }
+    });
+}
+
+function getInvoice() {
+  invoice.innerHTML = "";
+  let invoiceprice = 0;
+  fetch(`http://localhost:8090/api/findbookingitem/${bookingid}`)
+    .then((response) => response.json())
+    .then((data) => {
+      data.map((item) => {
+        invoice.innerHTML += `<p class="paraginvoice"><b>${item.productname}</b> ---- Qnt: ${item.quantity} ---- €${item.totalprice}</p>`;
+        invoiceprice += item.totalprice;
+        console.log(invoiceprice);
+      });
+      invoicetotal.innerHTML = `<p class="paraginvoicetotal"><b>Total price ----------------- €${invoiceprice}</b></p>`;
     });
 }

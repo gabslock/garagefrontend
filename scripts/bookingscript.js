@@ -160,6 +160,7 @@ function book() {
     datecheck == true
   ) {
     console.log("Ready to fetch");
+    console.log(`${mybookingtype}`);
     fetch("http://localhost:8090/api/newbooking", {
       method: "POST",
       body: JSON.stringify({
