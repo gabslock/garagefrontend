@@ -65,20 +65,35 @@
             <p class="paragbooking"><b>Status: </b>Booked</p>
             <p class="paragbooking"><b>Comments: </b>No comments needed.</p>
         </div>
+
+        <div class="parabookingrow">
+            <p class="paragbookingtitle"><b>Invoice</b></p>
+            <img src="./images/invoiceicon.png" alt="Invoice Icon" height="25">
+        </div>
+        <div id="invoice">
+            <p class="paraginvoice"><b>Annual service charge</b> - <b>Qnt:</b> 1 - <b>€39</b></p>
+        </div>
+
+        <div id="invoicetotal">
+            <p class="paraginvoicetotal"><b>Total price --------------- €39</b></p>
+        </div>
+        
         </div>
     </div>
 
     <div class="container col-11 col-sm-8 col-md-6 col-lg-6" id="bookingcontainerchange">
         <div class="booking col-11 col-sm-10 col-md-10 col-lg-10" id="changedetails">
 
+            <p class="headerbooking"><b>Update Booking</b></p>
+
             <div class="parabookingrow" id="changedetailstitle">
-            <p class="paragbookingtitle"><b>Update Details</b></p>
+            <p class="paragbookingtitle"><b>Change Details</b></p>
             <img src="./images/detailsicon.png" alt="Car Icon" height="25">
         </div>
         <div class="selectcontainer">
-            <p class="paragbooking"><b>Change Status:</b></p>
-            <select id="bookingstatus" onchange="changeBookingStatus()" class="w-50" id="filterstatus">
-            <option disabled selected>Select a status</option>
+            <p class="paragbooking"><b>Status:</b></p>
+            <select id="bookingstatus" onchange="changeBookingStatus()" id="filterstatus">
+            <option disabled selected>Select status</option>
             <option>Booked</option>
             <option>In Service</option>
             <option>Completed</option>
@@ -88,9 +103,9 @@
         </div>
 
         <div class="selectcontainer">
-            <p class="paragbooking"><b>Change Mechanic:</b></p>
-            <select id="bookingmechanic" onchange="changeBookingMechanic()" class="w-50" id="filterstatus">
-            <option disabled selected>Select a mechanic</option>
+            <p class="paragbooking"><b>Mechanic:</b></p>
+            <select id="bookingmechanic" onchange="changeBookingMechanic()" id="filterstatus">
+            <option disabled selected>Select mechanic</option>
             <option>John</option>
             <option>George</option>
             <option>Ali</option>
@@ -99,26 +114,29 @@
         </div>
         <div class="errormsg" id="errormechanic"></div>
 
+        <div class="parabookingrow" id="changedetailstitle">
+            <p class="paragbookingtitle"><b>Add expenses</b></p>
+            <img src="./images/detailsicon.png" alt="Car Icon" height="25">
         </div>
-    </div>
 
-    <div class="container col-11 col-sm-8 col-md-6 col-lg-6" id="invoicecontainer">
-        <div class="booking col-11 col-sm-10 col-md-10 col-lg-10" id="invoicedetails">
-
-            <p class="headerbooking"><b>Pricing Details</b></p>
-
-            <div class="parabookingrow">
-            <p class="paragbookingtitle"><b>Invoice</b></p>
-            <img src="./images/invoiceicon.png" alt="Invoice Icon" height="25">
+        <div class="selectcontainer">
+            <p class="paragbooking"><b>Expense:</b></p>
+            <select id="suppliesselect" onchange="getSupplyPrice()" id="filterstatus">
+            <option disabled selected>Select product/service</option>
+                </select>
         </div>
-            <div id="invoice">
-                <p class="paraginvoice"><b>Annual service charge</b> ---- <b>Qnt:</b> 1 ---- <b>€39</b></p>
-            </div>
 
-            <div id="invoicetotal">
-                <p class="paraginvoicetotal"><b>Total price ----------------- €39</b></p>
-            </div>
-            
+        <div class="selectcontainer">
+            <p class="paragbooking"><b>Unit price:</b></p>
+            <p class="paragbooking" id="showprice"></p>
+        </div>
+
+        <div class="selectcontainer">
+            <p class="paragbooking"><b>Quantity</b></p>
+            <input type="number" id="quantity" min="1" step="1"></input>
+        </div>
+        <button onclick="addToInvoice()">ADD TO INVOICE</button>
+
         </div>
     </div>
    

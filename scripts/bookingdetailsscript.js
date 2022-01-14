@@ -7,7 +7,7 @@ const myUrl = new URL("https://www.youtube.com/");*/
 
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
-let bookingid = urlParams.get("bookingid");
+let mybookingid = urlParams.get("bookingid");
 let numberdetails = document.querySelector("#numberdetails");
 let customerdetails = document.querySelector("#customerdetails");
 let vehicledetails = document.querySelector("#vehicledetails");
@@ -16,20 +16,18 @@ let userid;
 let errormechanic = document.querySelector("#errormechanic");
 let invoice = document.querySelector("#invoice");
 let invoicetotal = document.querySelector("#invoicetotal");
+let suppliesselect = document.querySelector("#suppliesselect");
+let showprice = document.querySelector("#showprice");
+let myunitprice;
 
 document.addEventListener("DOMContentLoaded", () => {
   getBookingDetails();
   getInvoice();
+  getSupplies();
 });
 
-/*function getBookingDetails() {
-  fetch(`http://localhost:8090/api/bookings/${bookingid}`)
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-}*/
-
 function getBookingDetails() {
-  fetch(`http://localhost:8090/api/bookings/${bookingid}`)
+  fetch(`http://localhost:8090/api/bookings/${mybookingid}`)
     .then((response) => response.json())
     .then((data) => {
       userid = data.userid;
@@ -72,7 +70,9 @@ function getBookingDetails() {
 
 function changeBookingStatus() {
   let bookingstatus = document.querySelector("#bookingstatus").value;
-  fetch(`http://localhost:8090/api/changestatus/${bookingid}/${bookingstatus}`)
+  fetch(
+    `http://localhost:8090/api/changestatus/${mybookingid}/${bookingstatus}`
+  )
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -85,7 +85,7 @@ function changeBookingMechanic() {
   let bookingmechanic = document.querySelector("#bookingmechanic").value;
   console.log(`Mech ${bookingmechanic}`);
   fetch(
-    `http://localhost:8090/api/changemechanic/${bookingid}/${bookingmechanic}`
+    `http://localhost:8090/api/changemechanic/${mybookingid}/${bookingmechanic}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -102,14 +102,70 @@ function changeBookingMechanic() {
 function getInvoice() {
   invoice.innerHTML = "";
   let invoiceprice = 0;
-  fetch(`http://localhost:8090/api/findbookingitem/${bookingid}`)
+  fetch(`http://localhost:8090/api/findbookingitem/${mybookingid}`)
     .then((response) => response.json())
     .then((data) => {
       data.map((item) => {
-        invoice.innerHTML += `<p class="paraginvoice"><b>${item.productname}</b> ---- Qnt: ${item.quantity} ---- €${item.totalprice}</p>`;
+        invoice.innerHTML += `<p class="paraginvoice">${item.productname} -- Qnt: ${item.quantity} -- €${item.totalprice}</p>`;
         invoiceprice += item.totalprice;
         console.log(invoiceprice);
       });
       invoicetotal.innerHTML = `<p class="paraginvoicetotal"><b>Total price ----------------- €${invoiceprice}</b></p>`;
+    });
+}
+
+function getSupplies() {
+  fetch(`http://localhost:8090/api/supplies`)
+    .then((response) => response.json())
+    .then((data) => {
+      data.map((item) => {
+        let newoption = document.createElement("option");
+        let optiontext = document.createTextNode(`${item.productname}`);
+        newoption.appendChild(optiontext);
+        suppliesselect.appendChild(newoption);
+      });
+    });
+}
+
+function getSupplyPrice() {
+  showprice.innerHTML = "";
+  let supplyselection = document.querySelector("#suppliesselect").value;
+  fetch("http://localhost:8090/api/getprice", {
+    method: "POST",
+    body: `${supplyselection}`,
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+    },
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      myunitprice = data;
+      showprice.innerHTML = `€${data}`;
+    });
+}
+
+function addToInvoice() {
+  let supplyselection = document.querySelector("#suppliesselect").value;
+  let myquantity = document.querySelector("#quantity").value;
+  fetch("http://localhost:8090/api/bookingitem", {
+    method: "POST",
+    body: JSON.stringify({
+      bookingid: mybookingid,
+      productname: supplyselection,
+      quantity: myquantity,
+      totalprice: myquantity * myunitprice,
+      unitprice: myunitprice,
+    }),
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+    },
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      window.location.reload(false);
     });
 }
