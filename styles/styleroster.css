@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap");
+
+body {
+  --primarycolor: #ffad2e;
+  --primarycolordark: #e9910e;
+  --secondarycolor: #1c77bd;
+  --secondarycolordark: #0d5a94;
+  --errorcolor: #8a0303;
+  --successcolor: #33c729;
+
+  font-family: "Baloo Bhaijaan 2", Arial !important;
+  color: #080808 !important;
+  height: 100vh;
+  background: url(./../images/background2.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.container {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background: #1c77bd;
+  opacity: 98%;
+  margin: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoandtext a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+  margin: 0.5rem;
+}
+
+.logoandtext a:hover {
+  color: black;
+}
+
+#gergarage {
+  font-weight: bold;
+}
+
+#logo {
+  margin-right: 10px;
+}
+
+.menu {
+  list-style: none;
+  display: inline-flex;
+  background-color: var(--primarycolor);
+  width: 100%;
+  justify-content: start;
+  padding: 0;
+}
+
+.menuoptions {
+  margin: 1rem;
+}
+
+.menuoptions:hover {
+  margin: 1rem;
+  border-radius: 3px;
+  border-color: black;
+  color: #000000;
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: var(--secondarycolor);
+}
+
+.menu a {
+  text-decoration: none;
+  color: black;
+}
+
+/*Change menu from horizontal to vertical in small screens*/
+@media (max-width: 800px) {
+  .menu {
+    display: block;
+  }
+  .menuoptions {
+    text-align: center;
+  }
+}
+
+#pagetitle {
+  margin: 1rem;
+  margin-bottom: 0rem;
+}
+
+input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+  outline: none;
+  background: #eeeeee;
+  transition: background 0.2s, border-color 0.2s;
+  margin-bottom: 0.7rem;
+}
+
+input:focus {
+  border-color: var(--primarycolor);
+  background: #ffffff;
+}
+
+.booking {
+  margin: 0.3rem;
+  padding: 0.5rem;
+  padding-bottom: 0.5rem;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background: var(--primarycolordark);
+  font-size: 14px;
+  cursor: pointer;
+  border: 2px solid #868686;
+  width: 100% !important;
+}
+
+.booking:hover {
+  border: 2px solid #dddddd;
+}
+
+.paragbooking {
+  font-size: 13px;
+  margin: 0px;
+}
+
+.headerbooking {
+  font-size: 16px;
+  margin: 0px;
+}
+
+.headerrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0rem;
+  margin-bottom: 0.2rem;
+}
+
+#mechname {
+  font-size: 22px;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
