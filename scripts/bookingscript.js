@@ -1,6 +1,7 @@
 //Check token when page is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Content loaded");
+  getMake();
+  getCarType();
   if (sessionStorage.getItem("token") == null) {
     console.log("No token found");
     window.location.href = "./login.html";
@@ -194,4 +195,36 @@ function book() {
         }
       });
   }
+}
+
+//Select for getting active car makes and types
+let vehiclemake = document.querySelector("#vehiclemake");
+let vehicletype = document.querySelector("#vehicletype");
+
+//Function to fetch options of car make from database
+function getMake() {
+  fetch(`http://localhost:8090/api/activemake/`)
+    .then((response) => response.json())
+    .then((data) => {
+      data.map((item) => {
+        let newoption = document.createElement("option");
+        let optiontext = document.createTextNode(`${item.name}`);
+        newoption.appendChild(optiontext);
+        vehiclemake.appendChild(newoption);
+      });
+    });
+}
+
+//Function to fetch options of car types from database
+function getCarType() {
+  fetch(`http://localhost:8090/api/activecartype/`)
+    .then((response) => response.json())
+    .then((data) => {
+      data.map((item) => {
+        let newoption = document.createElement("option");
+        let optiontext = document.createTextNode(`${item.name}`);
+        newoption.appendChild(optiontext);
+        vehicletype.appendChild(newoption);
+      });
+    });
 }
