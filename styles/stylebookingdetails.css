@@ -192,7 +192,7 @@ select {
 }
 
 button {
-  width: 50%;
+  width: 100%;
   height: 40px;
   padding: 1rem 1rem;
   font-weight: bold;
@@ -205,6 +205,7 @@ button {
   background: var(--secondarycolor);
   margin-bottom: 1rem;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
@@ -228,9 +229,16 @@ input {
   background: #eeeeee;
   transition: background 0.2s, border-color 0.2s;
   margin-bottom: 0.7rem;
+  width: 100%;
 }
 
 input:focus {
   border-color: var(--primarycolor);
   background: #ffffff;
+}
+
+.errormsg {
+  font-size: 12px;
+  color: var(--errorcolor);
+  margin-left: 5px;
 }

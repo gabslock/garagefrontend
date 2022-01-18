@@ -1,18 +1,5 @@
 let bookingcontainer = document.querySelector("#bookingcontainer");
 
-//Disable past dates in calendar
-var dt = new Date();
-dtyear = dt.getFullYear();
-dtmonth = dt.getMonth() + 1;
-if (dtmonth < 10) {
-  dtmonth = "0" + dtmonth;
-}
-dtday = dt.getDate();
-if (dtday < 10) {
-  dtday = "0" + dtday;
-}
-mindate = dtyear + "-" + dtmonth + "-" + dtday;
-
 let bookingdate = document.querySelector("#date1");
 bookingdate.setAttribute("min", mindate);
 

@@ -106,10 +106,6 @@
             <p class="paragbooking"><b>Mechanic:</b></p>
             <select id="bookingmechanic" onchange="changeBookingMechanic()" id="filterstatus">
             <option disabled selected>Select mechanic</option>
-            <option>John</option>
-            <option>George</option>
-            <option>Ali</option>
-            <option>Jack</option>
                 </select>
         </div>
         <div class="errormsg" id="errormechanic"></div>
@@ -125,16 +121,20 @@
             <option disabled selected>Select product/service</option>
                 </select>
         </div>
+        <div class="errormsg" id="errorproduct"></div>
+
+        <div class="selectcontainer">
+            <p class="paragbooking"><b>Quantity</b></p>
+            <input type="number" id="quantity" min="1" step="1"></input>
+        </div>
+        <div class="errormsg" id="errorquantity"></div>
 
         <div class="selectcontainer">
             <p class="paragbooking"><b>Unit price:</b></p>
             <p class="paragbooking" id="showprice"></p>
         </div>
 
-        <div class="selectcontainer">
-            <p class="paragbooking"><b>Quantity</b></p>
-            <input type="number" id="quantity" min="1" step="1"></input>
-        </div>
+        <br>
         <button onclick="addToInvoice()">ADD TO INVOICE</button>
 
         </div>

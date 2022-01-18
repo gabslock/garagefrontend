@@ -17,13 +17,17 @@ let errormechanic = document.querySelector("#errormechanic");
 let invoice = document.querySelector("#invoice");
 let invoicetotal = document.querySelector("#invoicetotal");
 let suppliesselect = document.querySelector("#suppliesselect");
+let mechanicsselect = document.querySelector("#bookingmechanic");
 let showprice = document.querySelector("#showprice");
 let myunitprice;
+let errorquantity = document.querySelector("#errorquantity");
+let errorproduct = document.querySelector("#errorproduct");
 
 document.addEventListener("DOMContentLoaded", () => {
   getBookingDetails();
   getInvoice();
   getSupplies();
+  getMechanics();
 });
 
 function getBookingDetails() {
@@ -149,23 +153,45 @@ function getSupplyPrice() {
 function addToInvoice() {
   let supplyselection = document.querySelector("#suppliesselect").value;
   let myquantity = document.querySelector("#quantity").value;
-  fetch("http://localhost:8090/api/bookingitem", {
-    method: "POST",
-    body: JSON.stringify({
-      bookingid: mybookingid,
-      productname: supplyselection,
-      quantity: myquantity,
-      totalprice: myquantity * myunitprice,
-      unitprice: myunitprice,
-    }),
-    headers: {
-      "Content-Type": "application/json; charset=UTF-8",
-    },
-  })
-    .then(function (response) {
-      return response.json();
+  errorquantity.innerHTML = ``;
+  errorproduct.innerHTML = ``;
+
+  if (supplyselection == "Select product/service") {
+    errorproduct.innerHTML = `Select product.`;
+  } else if (myquantity <= 0 || myquantity - Math.floor(myquantity) !== 0) {
+    errorquantity.innerHTML = `Select valid quantity.`;
+  } else {
+    fetch("http://localhost:8090/api/bookingitem", {
+      method: "POST",
+      body: JSON.stringify({
+        bookingid: mybookingid,
+        productname: supplyselection,
+        quantity: myquantity,
+        totalprice: myquantity * myunitprice,
+        unitprice: myunitprice,
+      }),
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
     })
-    .then(function (data) {
-      window.location.reload(false);
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        window.location.reload(false);
+      });
+  }
+}
+
+function getMechanics() {
+  fetch(`http://localhost:8090/api/activemechanics/`)
+    .then((response) => response.json())
+    .then((data) => {
+      data.map((item) => {
+        let newoption = document.createElement("option");
+        let optiontext = document.createTextNode(`${item.name}`);
+        newoption.appendChild(optiontext);
+        mechanicsselect.appendChild(newoption);
+      });
     });
 }
