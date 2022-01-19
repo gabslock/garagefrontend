@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   getMake();
   getCarType();
+  getBookingType();
   if (sessionStorage.getItem("token") == null) {
     console.log("No token found");
     window.location.href = "./login.html";
@@ -197,9 +198,10 @@ function book() {
   }
 }
 
-//Select for getting active car makes and types
+//Select for getting active car makes, car types and booking types (services)
 let vehiclemake = document.querySelector("#vehiclemake");
 let vehicletype = document.querySelector("#vehicletype");
+let bookingtype = document.querySelector("#bookingtype");
 
 //Function to fetch options of car make from database
 function getMake() {
@@ -225,6 +227,20 @@ function getCarType() {
         let optiontext = document.createTextNode(`${item.name}`);
         newoption.appendChild(optiontext);
         vehicletype.appendChild(newoption);
+      });
+    });
+}
+
+//Function to fetch options of booking types (services) from database
+function getBookingType() {
+  fetch(`http://localhost:8090/api/activeservices/`)
+    .then((response) => response.json())
+    .then((data) => {
+      data.map((item) => {
+        let newoption = document.createElement("option");
+        let optiontext = document.createTextNode(`${item.name}`);
+        newoption.appendChild(optiontext);
+        bookingtype.appendChild(newoption);
       });
     });
 }
