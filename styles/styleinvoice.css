@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  flex-direction: column;
+  font-family: Arial;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+td {
+  padding: 5px;
+}
+
+h5 {
+  margin: 7px;
+}

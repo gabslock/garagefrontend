@@ -198,3 +198,8 @@ a:hover {
   cursor: pointer;
   color: var(--secondarycolor);
 }
+
+#lastdetailsbutton {
+  background-color: var(--secondarycolor);
+  color: #ffffff;
+}

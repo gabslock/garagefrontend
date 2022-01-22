@@ -242,3 +242,56 @@ input:focus {
   color: var(--errorcolor);
   margin-left: 5px;
 }
+
+.deletestyle {
+  background-color: var(--primarycolordark);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.1rem;
+}
+
+.deletestyle:hover {
+  background-color: var(--primarycolor);
+  border-radius: 5px;
+  cursor: pointer;
+  border-color: white;
+}
+
+table {
+  border-color: #ffffff;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+td {
+  padding: 2px;
+}
+
+#getinvoice {
+  background-color: var(--primarycolor);
+  width: 100%;
+  height: 40px;
+  padding: 1rem 1rem;
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: #080808;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  background: var(--primarycolor);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#getinvoice:hover {
+  background: var(--primarycolordark);
+}
+
+#getinvoice:active {
+  transform: scale(0.98);
+}

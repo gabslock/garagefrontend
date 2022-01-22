@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   getMake();
   getCarType();
   getBookingType();
+  createLastDetailsButton();
   if (sessionStorage.getItem("token") == null) {
     console.log("No token found");
     window.location.href = "./login.html";
@@ -242,5 +243,32 @@ function getBookingType() {
         newoption.appendChild(optiontext);
         bookingtype.appendChild(newoption);
       });
+    });
+}
+
+function createLastDetailsButton() {
+  let myuserid2 = sessionStorage.getItem("id");
+  fetch(`http://localhost:8090/api/userhasbookings/${myuserid2}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      if (data == true) {
+        let lastdetailsdiv = document.querySelector("#lastdetailsdiv");
+        lastdetailsdiv.innerHTML = `<button id ="lastdetailsbutton" onclick="getLastCarDetails()">Click here to use last car details</button>`;
+      }
+    });
+}
+
+function getLastCarDetails() {
+  let myuserid = sessionStorage.getItem("id");
+  fetch(`http://localhost:8090/api/lastdetails/${myuserid}`)
+    .then((response) => response.json())
+    .then((data) => {
+      document.querySelector("#vehicleplate").value = data.vehicleplate;
+      document.querySelector("#vehicletype").value = data.vehicletype;
+      document.querySelector("#vehiclemake").value = data.vehiclemake;
+      document.querySelector("#vehiclemodel").value = data.vehiclemodel;
+      document.querySelector("#vehicleyear").value = data.vehicleyear;
+      document.querySelector("#vehicleengine").value = data.vehicleengine;
     });
 }

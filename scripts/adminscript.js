@@ -1,3 +1,10 @@
+document.addEventListener("DOMContentLoaded", () => {
+  if (sessionStorage.getItem("admintoken") == null) {
+    console.log("No token found");
+    window.location.href = "./adminlogin.html";
+  }
+});
+
 let bookingscontainer = document.querySelector("#bookingcontainer");
 let statuschosed = document.querySelector("#filterstatus").value;
 
@@ -13,12 +20,21 @@ function bookingByStatus() {
     .then((response) => response.json())
     .then((data) => {
       data.map((item) => {
-        bookingscontainer.innerHTML += `<div class="booking col-11 col-sm-9 col-md-9 col-lg-9" id="booking" onclick="location.href='./bookingdetails.html?bookingid=${item.bookingid}'">
+        let formatDate = new Date(item.date); //Get date to format in the output
+        bookingscontainer.innerHTML += `<div class="booking col-11 col-sm-9 col-md-9 col-lg-9" id="booking" onclick="location.href='./bookingdetails.html?bookingid=${
+          item.bookingid
+        }'">
           <div class="headerrow">
           <img src="./images/caricon.png" alt="Car Icon" height="25">
-          <p class="headerbooking"><b>${item.bookingtype} - ${item.date}</b></p>
+          <p class="headerbooking"><b>${
+            item.bookingtype
+          } - ${formatDate.getDate()}/${
+          formatDate.getMonth() + 1
+        }/${formatDate.getFullYear()}</b></p>
           </div>
-          <p class="paragbooking"><b>${item.vehicletype}: </b>${item.vehiclemake} - ${item.vehiclemodel} - ${item.vehicleyear}</p>
+          <p class="paragbooking"><b>${item.vehicletype}: </b>${
+          item.vehiclemake
+        } - ${item.vehiclemodel} - ${item.vehicleyear}</p>
           <p class="paragbooking"><b>Registration: </b>${item.vehicleplate}</p>
       </div>`;
       });

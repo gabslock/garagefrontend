@@ -1,9 +1,9 @@
-/*function getParameters(paramaterName) {
-  let parameters = new URLSearchParams(window.location.search);
-  return parameters.get(parameterName);
-}
-
-const myUrl = new URL("https://www.youtube.com/");*/
+document.addEventListener("DOMContentLoaded", () => {
+  if (sessionStorage.getItem("admintoken") == null) {
+    console.log("No token found");
+    window.location.href = "./adminlogin.html";
+  }
+});
 
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
@@ -22,6 +22,7 @@ let showprice = document.querySelector("#showprice");
 let myunitprice;
 let errorquantity = document.querySelector("#errorquantity");
 let errorproduct = document.querySelector("#errorproduct");
+let invoicetable = document.querySelector("#invoicetable");
 
 document.addEventListener("DOMContentLoaded", () => {
   getBookingDetails();
@@ -35,6 +36,7 @@ function getBookingDetails() {
     .then((response) => response.json())
     .then((data) => {
       userid = data.userid;
+      let formatDate = new Date(data.date); //Get date to format in the output
       numberdetails.innerHTML = `<p class="headerbooking"><b>Booking Nº ${data.bookingid}</b></p>`;
       vehicledetails.innerHTML = `<div class="parabookingrow">
       <p class="paragbookingtitle"><b>Vehicle Details</b></p>
@@ -52,7 +54,9 @@ function getBookingDetails() {
 </div>
 
 <p class="paragbooking"><b>Service: </b>${data.bookingtype}</p>
-<p class="paragbooking"><b>Date: </b>${data.date}</p>
+<p class="paragbooking"><b>Date: </b>${formatDate.getDate()}/${
+        formatDate.getMonth() + 1
+      }/${formatDate.getFullYear()}</p>
 <p class="paragbooking"><b>Mechanic: </b>${data.mechanic}</p>
 <p class="paragbooking"><b>Status: </b>${data.bookingstatus}</p>
 <p class="paragbooking"><b>Comments: </b>${data.comments}</p>`;
@@ -104,17 +108,70 @@ function changeBookingMechanic() {
 }
 
 function getInvoice() {
-  invoice.innerHTML = "";
+  invoicetable.innerHTML = "";
+  tabletr = document.createElement("tr");
+  tableexpense = document.createElement("td");
+  tableqnt = document.createElement("td");
+  tableprice = document.createElement("td");
+  tabledelete = document.createElement("td");
+  tableexpense.innerHTML = "<b>Expense</b>";
+  tableqnt.innerHTML = "<b>Qnt</b>";
+  tableprice.innerHTML = "<b>Price</b>";
+  tabledelete.innerHTML = "";
+  tabletr.appendChild(tableexpense);
+  tabletr.appendChild(tableqnt);
+  tabletr.appendChild(tableprice);
+  tabletr.appendChild(tabledelete);
+  invoicetable.appendChild(tabletr);
   let invoiceprice = 0;
   fetch(`http://localhost:8090/api/findbookingitem/${mybookingid}`)
     .then((response) => response.json())
     .then((data) => {
       data.map((item) => {
-        invoice.innerHTML += `<p class="paraginvoice">${item.productname} -- Qnt: ${item.quantity} -- €${item.totalprice}</p>`;
+        tabletr = document.createElement("tr");
+        tableexpense = document.createElement("td");
+        tableqnt = document.createElement("td");
+        tableprice = document.createElement("td");
+        tabledelete = document.createElement("td");
+        tabledelete.setAttribute(
+          "onclick",
+          `deleteItem(${item.bookingitemid})`
+        );
+        tabledelete.setAttribute("class", `deletestyle`);
+        tableexpense.appendChild(
+          document.createTextNode(`${item.productname}`)
+        );
+        tableqnt.appendChild(document.createTextNode(`${item.quantity}`));
+        tableprice.appendChild(document.createTextNode(`€${item.totalprice}`));
+        tabledelete.appendChild(document.createTextNode(`Delete`));
+        tabletr.appendChild(tableexpense);
+        tabletr.appendChild(tableqnt);
+        tabletr.appendChild(tableprice);
+        tabletr.appendChild(tabledelete);
+        invoicetable.appendChild(tabletr);
+        /*invoicetable.innerHTML += `<tr>
+        <td>Annual service charge</td>
+        <td>1</td>
+        <td>€39</td>
+      </tr>`;*/
+        /*invoice.innerHTML += `<p class="paraginvoice">${item.productname} -- Qnt: ${item.quantity} -- €${item.totalprice}</p>`;*/
         invoiceprice += item.totalprice;
         console.log(invoiceprice);
       });
-      invoicetotal.innerHTML = `<p class="paraginvoicetotal"><b>Total price ----------------- €${invoiceprice}</b></p>`;
+      tabletr = document.createElement("tr");
+      tableexpense = document.createElement("td");
+      tableqnt = document.createElement("td");
+      tableprice = document.createElement("td");
+      tabledelete = document.createElement("td");
+      tableexpense.innerHTML = "<b>Total</b>";
+      tableqnt.innerHTML = "";
+      tableprice.innerHTML = `<b>${invoiceprice}</b>`;
+      tabledelete.innerHTML = "";
+      tabletr.appendChild(tableexpense);
+      tabletr.appendChild(tableqnt);
+      tabletr.appendChild(tableprice);
+      tabletr.appendChild(tabledelete);
+      invoicetable.appendChild(tabletr);
     });
 }
 
@@ -167,7 +224,7 @@ function addToInvoice() {
         bookingid: mybookingid,
         productname: supplyselection,
         quantity: myquantity,
-        totalprice: myquantity * myunitprice,
+        totalprice: null,
         unitprice: myunitprice,
       }),
       headers: {
@@ -194,4 +251,18 @@ function getMechanics() {
         mechanicsselect.appendChild(newoption);
       });
     });
+}
+
+function deleteItem(bookingitemid) {
+  fetch(`http://localhost:8090/api/bookingitem/${bookingitemid}`, {
+    method: "DELETE",
+  })
+    .then((res) => res.text()) // or res.json()
+    .then((res) => console.log(res));
+  window.location.reload(false);
+}
+
+function openInvoice() {
+  window.open(`./invoice.html?bookingid=${mybookingid}`, "_blank");
+  /*window.open(url, (href = `./invoice.html?bookingid=${mybookingid}`)).focus();*/
 }

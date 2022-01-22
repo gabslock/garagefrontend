@@ -1,3 +1,10 @@
+document.addEventListener("DOMContentLoaded", () => {
+  if (sessionStorage.getItem("admintoken") == null) {
+    console.log("No token found");
+    window.location.href = "./adminlogin.html";
+  }
+});
+
 let bookingcontainer = document.querySelector("#bookingcontainer");
 
 let bookingdate = document.querySelector("#date1");
@@ -27,13 +34,24 @@ function selectDate() {
             console.log(data.length);
             data.map((item) => {
               let bookingofmechanic = document.querySelector(`#${item1.name}`);
-              bookingofmechanic.innerHTML += `<div class="booking" id="booking" onclick="location.href='./bookingdetails.html?bookingid=${item.bookingid}'">
+              let formatDate = new Date(item.date); //Get date to format in the output
+              bookingofmechanic.innerHTML += `<div class="booking" id="booking" onclick="location.href='./bookingdetails.html?bookingid=${
+                item.bookingid
+              }'">
                 <div class="headerrow">
                 <img src="./images/caricon.png" alt="Car Icon" height="25">
-                <p class="headerbooking"><b>${item.bookingtype} - ${item.date}</b></p>
+                <p class="headerbooking"><b>${
+                  item.bookingtype
+                } - ${formatDate.getDate()}/${
+                formatDate.getMonth() + 1
+              }/${formatDate.getFullYear()}</b></p>
                 </div>
-                <p class="paragbooking"><b>${item.vehicletype}: </b>${item.vehiclemake} - ${item.vehiclemodel} - ${item.vehicleyear}</p>
-                <p class="paragbooking"><b>Registration: </b>${item.vehicleplate}</p>
+                <p class="paragbooking"><b>${item.vehicletype}: </b>${
+                item.vehiclemake
+              } - ${item.vehiclemodel} - ${item.vehicleyear}</p>
+                <p class="paragbooking"><b>Registration: </b>${
+                  item.vehicleplate
+                }</p>
             </div>`;
             });
           });

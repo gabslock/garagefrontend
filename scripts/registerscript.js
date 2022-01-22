@@ -1,24 +1,3 @@
-/*function fetchApiData() {
-  fetch("https://jsonplaceholder.typicode.com/todos")
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-}*/
-
-/*function fetchApiData() {
-  fetch("https://jsonplaceholder.typicode.com/todos")
-    .then((response) => response.json())
-    .then((data) => {
-      const list = document.querySelector("#fill_list");
-      data.map((item) => {
-        const li = document.createElement("li");
-
-        li.setAttribute("id", item.id);
-        li.innerHTML = item.title;
-        list.appendChild(li);
-      });
-    });
-}*/
-
 //Divs that output error message
 let msgerrorlogin = document.querySelector("#errorlogin");
 let msgerrorpassword = document.querySelector("#errorpassword");
@@ -158,31 +137,5 @@ function registerApi() {
       });
   } else {
     console.log("Details are wrong");
-  } /*
-    fetch("http://localhost:8090/api/users", {
-      method: "POST",
-      body: JSON.stringify({
-        email: myemail,
-        firstname: myfirstname,
-        lastname: mylastname,
-        password: mypassword,
-        phone: myphone,
-      }),
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
-      });
-}
-
-function getUsers() {
-  fetch("http://localhost:8090/api/users")
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-*/
+  }
 }

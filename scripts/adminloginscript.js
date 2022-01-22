@@ -26,7 +26,7 @@ function adminloginApi() {
         console.log(data);
         let admintoken = Math.random().toString(16).substring(2);
         sessionStorage.setItem("admintoken", admintoken);
-        window.location.href = "./index.html";
+        window.location.href = "./admin.html";
       }
     });
 }
