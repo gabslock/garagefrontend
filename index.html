@@ -1,87 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ger's Garage - Car Shop</title>
-    <link rel="stylesheet" href="./styles/styleindex.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="./styles/styleindex.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Initial info with logo, menu and main picture -->
+    <div
+      class="container col-11 col-sm-10 col-md-8 col-lg-8"
+      id="containerheader"
+    >
+      <div class="logoandtext">
+        <a href="./index.html">
+          <img
+            id="logo"
+            src="./images/logonobg2.png"
+            alt="Ger's Garage Logo"
+            width="60"
+            height="60"
+          />
+          <h2 id="gergarage">Ger's Garage</h2>
+        </a>
+      </div>
+      <ul class="menu">
+        <a href="./index.html"><li class="menuoptions">Home</li></a>
+        <a href="./login.html"><li class="menuoptions">Login</li></a>
+        <a href="./register.html"><li class="menuoptions">Sign Up</li></a>
+        <a href="./booking.html"><li class="menuoptions">Book Now</li></a>
+        <a href="#servicecontainer"
+          ><li class="menuoptions">Our Services</li></a
+        >
+        <a href="#contact"><li class="menuoptions">Contact</li></a>
+        <a href="./adminlogin.html"><li class="menuoptions">Admin</li></a>
+      </ul>
+      <img src="./images/welcomeimage.jpg" width="100%" />
 
-    <div class="container col-11 col-sm-10 col-md-8 col-lg-8" id="containerheader">
-        <div class="logoandtext" ><a href="./index.html">
-            <img id="logo" src="./images/logonobg2.png" alt="Ger's Garage Logo" width="60" height="60">
-            <h2 id="gergarage">Ger's Garage</h2>
-          </a></div>
-            <ul class="menu">
-                <a href="./index.html"><li class="menuoptions">Home</li></a>
-                <a href="./login.html"><li class="menuoptions">Login</li></a>
-                <a href="./register.html"><li class="menuoptions">Sign Up</li></a>
-                <a href="./booking.html"><li class="menuoptions">Book Now</li></a>
-                <a href="#servicecontainer"><li class="menuoptions">Our Services</li></a>
-                <a href="#contact"><li class="menuoptions">Contact</li></a>
-                <a href="./adminlogin.html"><li class="menuoptions">Admin</li></a>
-              </ul>
-            <img src="./images/welcomeimage.jpg" width="100%"/>
+      <div class="welcomemessage">
+        <h3>
+          Welcome to Ger's Garage, your favourite automotive repair shop in
+          Dublin!
+        </h3>
+        <h5>
+          Our business has the best maintance and repair solutions for a vast
+          variety of vehicles and brands and we have the best mechanics to get
+          your vehicle in top operating conditions.
+        </h5>
+      </div>
+      <!-- Description os services -->
+      <div class="servicecontainer" id="servicecontainer">
+        <img
+          src="./images/annualservice.jpg"
+          alt="Ger's Garage Logo"
+          width="240"
+          height="240"
+        />
+        <div class="servicetext">
+          <h3>Annual Service</h3>
+          <p>
+            Most of the breakdowns of a vehicle can be avoid by doing a regular
+            maintenance. Our annual service is a check up of your car where we
+            will make sure that everything is in order.
+          </p>
+          <h5>From €39</h5>
+          <button onclick="goToBookings()">BOOK</button>
+        </div>
+      </div>
 
-            <div class="welcomemessage"><h3>Welcome to Ger's Garage, your favourite automotive repair shop in Dublin!</h3> 
-              <h5>Our business has the best maintance and repair solutions for a vast variety of vehicles and brands and we have the best mechanics to get your vehicle in top operating conditions.</h5>
-            </div>
+      <div class="servicecontainer">
+        <img
+          src="./images/majorservice.jpg"
+          alt="Ger's Garage Logo"
+          width="240"
+          height="240"
+        />
+        <div class="servicetext">
+          <h3>Major Service</h3>
+          <p>
+            A Major Service is recommended every two years or after 24.000 miles
+            of driving. We will check every aspect of your vehicle, including
+            brakes, transmission fluid and filters.
+          </p>
+          <h5>From €99</h5>
+          <button onclick="goToBookings()">BOOK</button>
+        </div>
+      </div>
 
-            <div class="servicecontainer" id="servicecontainer">
-              <img src="./images/annualservice.jpg" alt="Ger's Garage Logo" width="240" height="240">
-              <div class="servicetext"><h3>Annual Service</h3>
-              <p>Most of the breakdowns of a vehicle can be avoid by doing a regular maintenance. Our annual service is a check up of your car where we will make sure that everything is in order.</p>
-              <h5>From €39</h5>
-              <button onclick="goToBookings()">BOOK</button>
-            </div>
-            </div>
+      <div class="servicecontainer">
+        <img
+          src="./images/repairfault.jpg"
+          alt="Ger's Garage Logo"
+          width="240"
+          height="240"
+        />
+        <div class="servicetext">
+          <h3>Repair/Fault</h3>
+          <p>
+            We do all types of small amd medium rapairs, including oil changes,
+            mini-lube facilities, tire changes, replacing headlights and
+            windshield wipers.
+          </p>
+          <h5>From €39</h5>
+          <button onclick="goToBookings()">BOOK</button>
+        </div>
+      </div>
 
-            <div class="servicecontainer">
-              <img src="./images/majorservice.jpg" alt="Ger's Garage Logo" width="240" height="240">
-              <div class="servicetext"><h3>Major Service</h3>
-              <p>A Major Service is recommended every two years or after 24.000 miles of driving. We will check every aspect of your vehicle, including brakes, transmission fluid and filters.</p>
-              <h5>From €99</h5>
-              <button onclick="goToBookings()">BOOK</button>
-            </div>
-            </div>
-
-            <div class="servicecontainer">
-              <img src="./images/repairfault.jpg" alt="Ger's Garage Logo" width="240" height="240">
-              <div class="servicetext"><h3>Repair/Fault</h3>
-              <p>We do all types of small amd medium rapairs, including oil changes, mini-lube facilities, tire changes, replacing headlights and windshield wipers.</p>
-              <h5>From €39</h5>
-              <button onclick="goToBookings()">BOOK</button>
-            </div>
-            </div>
-
-            <div class="servicecontainer">
-              <img src="./images/majorrepair.jpg" alt="Ger's Garage Logo" width="240" height="240">
-              <div class="servicetext"><h3>Major Repair</h3>
-              <p>We repair and replace frames and bodies, including painting, of small and medium vehicles. If you were involved in a collision or any other type of accindent, count on us to fix it!</p>
-              <h5>From €99</h5>
-              <button onclick="goToBookings()">BOOK</button>
-            </div>
-            </div>
-
-            <div class="contact" id="contact">
-              <div class="mapouter"><div class="gmap_canvas"><iframe width="300" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=CCT%20Dublin&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies-online.net"></a><br><style>.mapouter{position:relative;text-align:right;height:300px;width:300px;}</style><a href="https://www.embedgooglemap.net">insert google map into wordpress</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:300px;width:300px;}</style></div></div>
-                <div class="contacttext">
-                  <h3>Contact</h3>
-                  <p>Address: 30 Westmoreland St, Dublin 2, D02 HK35. Dublin, Ireland.</p>
-                  <p>Phone number: 08654875365</p>
-                  <p>E-mail: admin@gersgarage.ie</p>
-                  <p>www.gersgarage.ie</p>
-                  <p>Ger's Garage is is a fictional business part of the Guided Technology Project for the Higher Diploma in Computing Science at CCT Dublin. Developed by Gabriel Jucá ( student number 2021201)</p>
-                </div>
-            </div>
-
+      <div class="servicecontainer">
+        <img
+          src="./images/majorrepair.jpg"
+          alt="Ger's Garage Logo"
+          width="240"
+          height="240"
+        />
+        <div class="servicetext">
+          <h3>Major Repair</h3>
+          <p>
+            We repair and replace frames and bodies, including painting, of
+            small and medium vehicles. If you were involved in a collision or
+            any other type of accindent, count on us to fix it!
+          </p>
+          <h5>From €99</h5>
+          <button onclick="goToBookings()">BOOK</button>
+        </div>
+      </div>
+      <!-- Map and details of the business -->
+      <div class="contact" id="contact">
+        <div class="mapouter">
+          <div class="gmap_canvas">
+            <iframe
+              width="300"
+              height="300"
+              id="gmap_canvas"
+              src="https://maps.google.com/maps?q=CCT%20Dublin&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              frameborder="0"
+              scrolling="no"
+              marginheight="0"
+              marginwidth="0"
+            ></iframe
+            ><a href="https://fmovies-online.net"></a><br /><style>
+              .mapouter {
+                position: relative;
+                text-align: right;
+                height: 300px;
+                width: 300px;
+              }</style
+            ><a href="https://www.embedgooglemap.net"
+              >insert google map into wordpress</a
+            ><style>
+              .gmap_canvas {
+                overflow: hidden;
+                background: none !important;
+                height: 300px;
+                width: 300px;
+              }
+            </style>
+          </div>
+        </div>
+        <div class="contacttext">
+          <h3>Contact</h3>
+          <p>
+            Address: 30 Westmoreland St, Dublin 2, D02 HK35. Dublin, Ireland.
+          </p>
+          <p>Phone number: 08654875365</p>
+          <p>E-mail: admin@gersgarage.ie</p>
+          <p>www.gersgarage.ie</p>
+          <p>
+            Ger's Garage is is a fictional business part of the Guided
+            Technology Project for the Higher Diploma in Computing Science at
+            CCT Dublin. Developed by Gabriel Jucá ( student number 2021201)
+          </p>
+        </div>
+      </div>
     </div>
-    
+
     <script src="./scripts/indexscript.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

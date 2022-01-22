@@ -1,4 +1,8 @@
-//Divs that output error message
+/*Script of register.html page
+@name: Gabriel Jucá
+*/
+
+//Declaring divs that output error message
 let msgerrorlogin = document.querySelector("#errorlogin");
 let msgerrorpassword = document.querySelector("#errorpassword");
 let msgerrorpasswordrep = document.querySelector("#errorpasswordrep");

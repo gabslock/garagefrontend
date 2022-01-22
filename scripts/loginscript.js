@@ -1,5 +1,11 @@
+/*Script of login.html page
+@name: Gabriel Jucá
+*/
+
+/*Declaring variables*/
 let msgerrorlogin = document.querySelector("#errorlogin");
 
+/*Function to login (customer)*/
 function loginApi() {
   sessionStorage.removeItem("token");
   sessionStorage.removeItem("id");

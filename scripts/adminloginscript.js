@@ -1,5 +1,11 @@
+/*Script of adminlogin.html page
+@name: Gabriel Jucá
+*/
+
+/*Declaring variables*/
 let msgerrorlogin = document.querySelector("#errorlogin");
 
+/*Function to login (admin)*/
 function adminloginApi() {
   let myemail = document.querySelector("#email").value;
   let mypassword = document.querySelector("#password").value;

@@ -1,10 +1,20 @@
+/*Script of bookingdetails.html page
+@name: Gabriel Jucá
+*/
+
+/*Actions when page is loaded. Page only appears if admin is logged in*/
 document.addEventListener("DOMContentLoaded", () => {
   if (sessionStorage.getItem("admintoken") == null) {
     console.log("No token found");
     window.location.href = "./adminlogin.html";
   }
+  getBookingDetails();
+  getInvoice();
+  getSupplies();
+  getMechanics();
 });
 
+/*Declaring variables*/
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
 let mybookingid = urlParams.get("bookingid");
@@ -24,13 +34,7 @@ let errorquantity = document.querySelector("#errorquantity");
 let errorproduct = document.querySelector("#errorproduct");
 let invoicetable = document.querySelector("#invoicetable");
 
-document.addEventListener("DOMContentLoaded", () => {
-  getBookingDetails();
-  getInvoice();
-  getSupplies();
-  getMechanics();
-});
-
+/*HTTP request to get booking details*/
 function getBookingDetails() {
   fetch(`http://localhost:8090/api/bookings/${mybookingid}`)
     .then((response) => response.json())
@@ -76,6 +80,7 @@ function getBookingDetails() {
     });
 }
 
+/*Function to change the status of a booking*/
 function changeBookingStatus() {
   let bookingstatus = document.querySelector("#bookingstatus").value;
   fetch(
@@ -88,6 +93,7 @@ function changeBookingStatus() {
   window.location.reload(false);
 }
 
+/*Function to change the mechanic of a booking*/
 function changeBookingMechanic() {
   errormechanic.innerHTML = "";
   let bookingmechanic = document.querySelector("#bookingmechanic").value;
@@ -107,6 +113,7 @@ function changeBookingMechanic() {
     });
 }
 
+/*Function to get the invoice details of a booking*/
 function getInvoice() {
   invoicetable.innerHTML = "";
   tabletr = document.createElement("tr");
@@ -149,12 +156,6 @@ function getInvoice() {
         tabletr.appendChild(tableprice);
         tabletr.appendChild(tabledelete);
         invoicetable.appendChild(tabletr);
-        /*invoicetable.innerHTML += `<tr>
-        <td>Annual service charge</td>
-        <td>1</td>
-        <td>€39</td>
-      </tr>`;*/
-        /*invoice.innerHTML += `<p class="paraginvoice">${item.productname} -- Qnt: ${item.quantity} -- €${item.totalprice}</p>`;*/
         invoiceprice += item.totalprice;
         console.log(invoiceprice);
       });
@@ -175,6 +176,7 @@ function getInvoice() {
     });
 }
 
+/*Function to get list of supplies available*/
 function getSupplies() {
   fetch(`http://localhost:8090/api/supplies`)
     .then((response) => response.json())
@@ -188,6 +190,7 @@ function getSupplies() {
     });
 }
 
+/*Function that shows price of supply selected*/
 function getSupplyPrice() {
   showprice.innerHTML = "";
   let supplyselection = document.querySelector("#suppliesselect").value;
@@ -207,6 +210,7 @@ function getSupplyPrice() {
     });
 }
 
+/*Function to add expense selected to the invoice*/
 function addToInvoice() {
   let supplyselection = document.querySelector("#suppliesselect").value;
   let myquantity = document.querySelector("#quantity").value;
@@ -240,6 +244,7 @@ function addToInvoice() {
   }
 }
 
+/*Function to get mechanics that are active*/
 function getMechanics() {
   fetch(`http://localhost:8090/api/activemechanics/`)
     .then((response) => response.json())
@@ -253,6 +258,7 @@ function getMechanics() {
     });
 }
 
+/*Function to delete a item from the incoive*/
 function deleteItem(bookingitemid) {
   fetch(`http://localhost:8090/api/bookingitem/${bookingitemid}`, {
     method: "DELETE",
@@ -262,7 +268,7 @@ function deleteItem(bookingitemid) {
   window.location.reload(false);
 }
 
+/*Function open new tab with final invoice*/
 function openInvoice() {
   window.open(`./invoice.html?bookingid=${mybookingid}`, "_blank");
-  /*window.open(url, (href = `./invoice.html?bookingid=${mybookingid}`)).focus();*/
 }

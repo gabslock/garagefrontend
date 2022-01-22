@@ -1,17 +1,21 @@
+/*Script of adminscript.html page
+@name: Gabriel Jucá
+*/
+
+/*Actions when page is loaded. Page only appears if admin is logged in*/
 document.addEventListener("DOMContentLoaded", () => {
   if (sessionStorage.getItem("admintoken") == null) {
     console.log("No token found");
     window.location.href = "./adminlogin.html";
   }
-});
-
-let bookingscontainer = document.querySelector("#bookingcontainer");
-let statuschosed = document.querySelector("#filterstatus").value;
-
-document.addEventListener("DOMContentLoaded", () => {
   bookingByStatus();
 });
 
+/*Declaring variables*/
+let bookingscontainer = document.querySelector("#bookingcontainer");
+let statuschosed = document.querySelector("#filterstatus").value;
+
+/*Getting bookings according to selected status*/
 function bookingByStatus() {
   bookingscontainer.innerHTML = "";
   let statuschosed = document.querySelector("#filterstatus").value;

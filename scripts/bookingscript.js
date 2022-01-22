@@ -1,4 +1,8 @@
-//Check token when page is loaded
+/*Script of booking.html page
+@name: Gabriel Jucá
+*/
+
+/*Actions when page is loaded. Page only appears if customer is logged in*/
 document.addEventListener("DOMContentLoaded", () => {
   getMake();
   getCarType();
@@ -199,7 +203,7 @@ function book() {
   }
 }
 
-//Select for getting active car makes, car types and booking types (services)
+//Query for getting active car makes, car types and booking types (services)
 let vehiclemake = document.querySelector("#vehiclemake");
 let vehicletype = document.querySelector("#vehicletype");
 let bookingtype = document.querySelector("#bookingtype");
@@ -246,6 +250,7 @@ function getBookingType() {
     });
 }
 
+//Function to create button that remember details of last car booked. Only appears if user has booked a service before
 function createLastDetailsButton() {
   let myuserid2 = sessionStorage.getItem("id");
   fetch(`http://localhost:8090/api/userhasbookings/${myuserid2}`)
@@ -259,6 +264,7 @@ function createLastDetailsButton() {
     });
 }
 
+//Function to write details of last car used
 function getLastCarDetails() {
   let myuserid = sessionStorage.getItem("id");
   fetch(`http://localhost:8090/api/lastdetails/${myuserid}`)

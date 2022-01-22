@@ -1,12 +1,23 @@
+/*Script of invoice.html page
+@name: Gabriel Jucá
+*/
+
+/*Actions when page is loaded. Page only appears if admin is logged in*/
 document.addEventListener("DOMContentLoaded", () => {
   getInvoice();
+  if (sessionStorage.getItem("admintoken") == null) {
+    console.log("No token found");
+    window.location.href = "./adminlogin.html";
+  }
 });
 
+/*Declaring variables*/
 let invoicetable = document.querySelector("#invoicetable");
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
 let mybookingid = urlParams.get("bookingid");
 
+/*Get all the invoice details*/
 function getInvoice() {
   tabletr = document.createElement("tr");
   tableexpense = document.createElement("td");
@@ -47,7 +58,7 @@ function getInvoice() {
       tableprice = document.createElement("td");
       tableexpense.innerHTML = "<b>Total</b>";
       tableqnt.innerHTML = "";
-      tableprice.innerHTML = `<b>${invoiceprice}</b>`;
+      tableprice.innerHTML = `<b>€${invoiceprice}</b>`;
       tabletr.appendChild(tableexpense);
       tabletr.appendChild(tableqnt);
       tabletr.appendChild(tableprice);
